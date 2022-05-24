@@ -35,6 +35,12 @@
                     <Label col="0" text.decode="&#xf005;" class="nt-icon fas"/>
                     <Label col="1" text="Featured" class="p-r-10"/>
                 </GridLayout>
+                <GridLayout columns="auto, *"
+                            :class="'nt-drawer__list-item' + (selectedPage === 'Featured' ? ' -selected': '')"
+                            @tap="onNavigationItemTap(FileSystem)">
+                    <Label col="0" text.decode="&#xf005;" class="nt-icon fas"/>
+                    <Label col="1" text="FileSystem" class="p-r-10"/>
+                </GridLayout>
 
                 <StackLayout class="hr"/>
 
@@ -55,6 +61,9 @@
   import Featured from "./Featured";
   import Search from "./Search";
   import Settings from "./Settings";
+
+  import FileSystem from "./FileSystem";
+
   import * as utils from "~/shared/utils";
   import { SelectedPageService } from "~/shared/selected-page-service";
 
@@ -70,6 +79,7 @@
         Featured: Featured,
         Search: Search,
         Settings: Settings,
+        FileSystem : FileSystem,
         selectedPage: ""
       };
     },
@@ -78,7 +88,8 @@
       Browse,
       Featured,
       Search,
-      Settings
+      Settings,
+      FileSystem
     },
     methods: {
       onNavigationItemTap(component) {
